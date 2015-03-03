@@ -23,3 +23,4 @@ D:\monogame-vallahackathonlocal\MonogameShooter\bin\Windows\Debug\SharpDX.Direct
 D:\monogame-vallahackathonlocal\MonogameShooter\obj\x86\Debug\MonogameShooter.csprojResolveAssemblyReference.cache
 D:\monogame-vallahackathonlocal\MonogameShooter\obj\x86\Debug\MonogameShooter.exe
 D:\monogame-vallahackathonlocal\MonogameShooter\obj\x86\Debug\MonogameShooter.pdb
+D:\monogame-vallahackathonlocal\MonogameShooter\bin\Windows\Debug\Content\Graphics\player.png
