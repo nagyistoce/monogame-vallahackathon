@@ -1,12 +1,11 @@
 ﻿#region Using Statements
-using System;
-using System.Collections.Generic;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.GamerServices;
+using MonogameShooter.ObjetosJuego;
+
 #endregion
 
 namespace MonogameShooter
@@ -17,7 +16,8 @@ namespace MonogameShooter
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private SpriteBatch _spriteBatch;
+        private Player _jugador;
 
         public Game1()
             : base()
@@ -35,7 +35,8 @@ namespace MonogameShooter
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            _jugador = new Player();
+            
             base.Initialize();
         }
 
@@ -46,9 +47,12 @@ namespace MonogameShooter
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
+            GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            _jugador.Initialize(Content.Load<Texture2D>("Graphics\\player"), playerPosition);
         }
 
         /// <summary>
@@ -84,6 +88,12 @@ namespace MonogameShooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            // Start drawing
+            _spriteBatch.Begin();
+
+            // Draw the Player
+            _jugador.Draw(_spriteBatch);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
