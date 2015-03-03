@@ -38,6 +38,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="ObjetosJuego\Animacion.cs" />
     <Compile Include="ObjetosJuego\Fondo.cs" />
+    <Compile Include="ObjetosJuego\Laser.cs" />
     <Compile Include="ObjetosJuego\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
