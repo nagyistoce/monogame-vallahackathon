@@ -61,9 +61,18 @@ namespace MonogameShooter
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
-            GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
-            _jugador.Initialize(Content.Load<Texture2D>("Graphics\\player"), playerPosition);
+          //  Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
+           // GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+           // _jugador.Initialize(Content.Load<Texture2D>("Graphics\\player"), playerPosition);
+            Animacion _jugadorAnimacion = new Animacion();
+            Texture2D playerTexture = Content.Load<Texture2D>("Graphics\\shipAnimation");
+            //8 son las imágenes distintas que pertenecerán de alguna manera al "array" de imágenes
+            _jugadorAnimacion.Initialize(playerTexture, Vector2.Zero, 115, 69, 8, 30, Color.White,1f, true);
+            //playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y+ GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            //_jugador.Initialize(_jugadorAnimacion, playerPosition);
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,GraphicsDevice.Viewport.TitleSafeArea.Y+ GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            _jugador.Initialize(_jugadorAnimacion, playerPosition);
+
         }
 
         /// <summary>
@@ -94,14 +103,14 @@ namespace MonogameShooter
 
             //Update the player
             UpdatePlayer(gameTime);
-
+            
             base.Update(gameTime);
         }
 
         private void UpdatePlayer(GameTime gameTime)
         {
             // Get Thumbstick Controls
-
+            _jugador.Update(gameTime);
 
           
 
