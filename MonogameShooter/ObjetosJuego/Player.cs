@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace MonogameShooter.ObjetosJuego
 {
@@ -50,6 +51,8 @@ namespace MonogameShooter.ObjetosJuego
         {
             _jugadorAnimacion.Position = Position;
             _jugadorAnimacion.Update(gameTime);
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
