@@ -27,6 +27,16 @@ namespace MonogameShooter
         // A movement speed for the player
         private float _velocidadJugador;
 
+
+        //Para el fondo
+        // Image used to display the static background
+        Texture2D _mainBackground;
+        Rectangle _rectBackground;
+        float scale = 1f;
+        private Fondo _bgLayer1;
+        private Fondo _bgLayer2;
+
+
         public Game1()
             : base()
         {
@@ -45,7 +55,15 @@ namespace MonogameShooter
             // TODO: Add your initialization logic here
             _jugador = new Player();
             _velocidadJugador=  8.0f;
-        
+
+
+            //Background
+            _bgLayer1 = new Fondo();
+            _bgLayer2 = new Fondo();
+            _rectBackground = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+
+
+
             //Enable the FreeDrag gesture.
        //     TouchPanel.EnabledGestures = GestureType.FreeDrag;
             base.Initialize();
@@ -59,6 +77,15 @@ namespace MonogameShooter
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+
+            // Load the parallaxing background
+            _bgLayer1.Initialize(Content, "Graphics/bgLayer1", GraphicsDevice.Viewport.Width,
+            GraphicsDevice.Viewport.Height, -1);
+            _bgLayer2.Initialize(Content, "Graphics/bgLayer2", GraphicsDevice.Viewport.Width,
+            GraphicsDevice.Viewport.Height, -2);
+            _mainBackground = Content.Load<Texture2D>("Graphics/mainbackground");
+
 
             // TODO: use this.Content to load your game content here
           //  Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
@@ -97,13 +124,20 @@ namespace MonogameShooter
             // TODO: Add your update logic here
             // Save the previous state of the keyboard and game pad so we can determine single key/button presses
 
+           
+
+            // Update the parallaxing background
+            _bgLayer1.Update(gameTime);
+            _bgLayer2.Update(gameTime);
+
+
         //    _estadoAnteriorTeclado = _estadoActualTeclado;
             // Read the current state of the keyboard and gamepad and store it
             _estadoActualTeclado = Keyboard.GetState();
 
             //Update the player
             UpdatePlayer(gameTime);
-            
+
             base.Update(gameTime);
         }
 
@@ -147,6 +181,12 @@ namespace MonogameShooter
             // Start drawing
             _spriteBatch.Begin();
 
+            //Draw the Main Background Texture
+            _spriteBatch.Draw(_mainBackground, _rectBackground, Color.White);
+            // Draw the moving background
+            _bgLayer1.Draw(_spriteBatch);
+            _bgLayer2.Draw(_spriteBatch);
+            
             // Draw the Player
             _jugador.Draw(_spriteBatch);
             _spriteBatch.End();
