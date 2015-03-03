@@ -12,7 +12,7 @@ namespace MonogameShooter.ObjetosJuego
         // Animation representing the player. Imagen de la nave
         private Texture2D _playerTexture;
         // Position of the Player relative to the upper left side of the screen
-        private Vector2 _position;
+        public Vector2 Position;
         // State of the player
         private bool _active;
         // Amount of hit points that player has
@@ -29,12 +29,13 @@ namespace MonogameShooter.ObjetosJuego
         }
 
 
+
         public void Initialize(Texture2D texture, Vector2 position)
         {
 
             _playerTexture = texture;
             // Set the starting position of the player around the middle of the screen and to the back
-            _position = position;
+            Position = position;
             // Set the player to be active
             _active = true;
             // Set the player health
@@ -46,7 +47,7 @@ namespace MonogameShooter.ObjetosJuego
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw (_playerTexture, _position, null, Color.White, 0f, Vector2.Zero, 1f,SpriteEffects.None, 0f);
+            spriteBatch.Draw (_playerTexture, Position, null, Color.White, 0f, Vector2.Zero, 1f,SpriteEffects.None, 0f);
 
         }
     }
