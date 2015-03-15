@@ -1,0 +1,1 @@
+Proyecto creado a partir de los tutoriales de monogame.net, y que pretende en pocos pasos mostrar cómo de sencillo puede llegar a ser la creación de un proyecto para generación de un juego típico de destrucción de naves.
